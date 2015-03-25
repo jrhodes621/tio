@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  access_token: MyString
+  salt: MyString
+  partner_id: 
+  deleted: false
+  deleted_at: 2015-03-24 21:32:31
+
+two:
+  access_token: MyString
+  salt: MyString
+  partner_id: 
+  deleted: false
+  deleted_at: 2015-03-24 21:32:31

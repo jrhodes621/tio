@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_type: MyString
+  account_type: MyString
+  routing_number: MyString
+  account_number: MyString
+  amount: 1
+  individual_id_number: MyString
+  individual_name: MyString
+  confirmation_number: MyString
+  transaction_status: MyString
+  batch_id: 
+
+two:
+  transaction_type: MyString
+  account_type: MyString
+  routing_number: MyString
+  account_number: MyString
+  amount: 1
+  individual_id_number: MyString
+  individual_name: MyString
+  confirmation_number: MyString
+  transaction_status: MyString
+  batch_id: 

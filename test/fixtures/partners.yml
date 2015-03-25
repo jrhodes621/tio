@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partner_name: MyString
+  company_name: MyString
+  company_identification: MyString
+  company_entry_description: MyString
+  immediate_destination: MyString
+  immediate_destination_name: MyString
+  immediate_origin: MyString
+  immediate_origin_name: MyString
+  originating_financial_institution: MyString
+
+two:
+  partner_name: MyString
+  company_name: MyString
+  company_identification: MyString
+  company_entry_description: MyString
+  immediate_destination: MyString
+  immediate_destination_name: MyString
+  immediate_origin: MyString
+  immediate_origin_name: MyString
+  originating_financial_institution: MyString
