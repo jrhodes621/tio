@@ -15,8 +15,8 @@ class NachaFileWorker
 		hash = request.payments_data
 
     transactions = Transactions.where(:status =>  "Pending")
-    debits = transactions.where(:transaction_type = "D")
-    credits = transactions.where(:transaction_type = "C")
+    debits = transactions.where(:transaction_type => "D")
+    credits = transactions.where(:transaction_type => "C")
 
 		# File Header
 		fh = ach.header
