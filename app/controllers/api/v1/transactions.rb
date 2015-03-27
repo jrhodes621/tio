@@ -12,7 +12,7 @@ module API
         desc "Creates a transaction"
         params do
             requires :transaction_type, type: String, desc: "type of transaction"
-            requires :account_holder_name type: String, desc: "acct holder name"
+            requires :account_holder_name, type: String, desc: "acct holder name"
             requires :account_type, type: String, desc: "Saving or Checking account"
             requires :routing_number, type: String, desc: "routing number"
             requires :account_number, type: String, desc: "account number"
