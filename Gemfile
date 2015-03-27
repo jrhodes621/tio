@@ -31,6 +31,10 @@ gem 'ach'
 gem 's3'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
+gem 'grape-entity', '~> 0.4.0'
+gem 'rack-contrib', '~> 1.1.0'
+gem 'grape-swagger', '~> 0.7.2'
+gem 'grape-swagger-rails',  '~> 0.0.8'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

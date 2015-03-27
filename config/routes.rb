@@ -55,4 +55,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  mount API::Base => '/api'
+  mount GrapeSwaggerRails::Engine => '/apidoc'
+
 end
