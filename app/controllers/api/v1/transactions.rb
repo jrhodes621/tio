@@ -16,7 +16,7 @@ module API
             requires :account_type, type: String, desc: "Saving or Checking account"
             requires :routing_number, type: String, desc: "routing number"
             requires :account_number, type: String, desc: "account number"
-            requires :amount, type:integer, desc: "amount of transaction"
+            requires :amount, type:Integer, desc: "amount of transaction"
         end
         post do
 
