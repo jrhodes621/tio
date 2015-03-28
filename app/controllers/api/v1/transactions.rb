@@ -33,8 +33,10 @@ module API
 
         end
 
-        get "" do
-
+        get "/" do
+          {
+            :hello => "James"
+          }
         end
 
         get "/:id" do
