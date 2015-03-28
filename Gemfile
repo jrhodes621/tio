@@ -1,6 +1,20 @@
 source 'https://rubygems.org'
 
 
+group :development do
+  gem 'guard-rspec'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'terminal-notifier'
+  gem 'quiet_assets'
+  gem 'letter_opener'
+  gem "meta_request"
+  gem "pry", "~> 0.9"
+  gem "pry-nav", "~> 0.2"
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'rb-readline'
+  gem 'awesome_print'
+end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record

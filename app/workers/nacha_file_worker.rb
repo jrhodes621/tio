@@ -8,15 +8,14 @@ class NachaFileWorker
 		trace_number = 0
 
     nacha_file = Batch.create({
-      start_time => Time.now,
-      batch_status => "Processing"
+      :start_time => Time.now,
+      :batch_status => "Processing"
     })
 
-		hash = request.payments_data
-
-    transactions = Transactions.where(:status =>  "Pending")
-    debits = transactions.where(:transaction_type => "D")
-    credits = transactions.where(:transaction_type => "C")
+		partner = Partner.first
+    transactions = Transaction.where(:transaction_status =>  "Pending")
+    debits = transactions.where(:transaction_type => "W")
+    credits = transactions.where(:transaction_type => "D")
 
 		# File Header
 		fh = ach.header
@@ -25,9 +24,7 @@ class NachaFileWorker
 		fh.immediate_origin = partner.immediate_origin;
 		fh.immediate_origin_name = partner.immediate_origin_name;
 
-		# Batch
-		#for batch_item in hash["batches"] do
-
+		#Batch
 		batch = ACH::Batch.new
 		bh = batch.header
 		bh.company_name = partner.company_name
@@ -52,12 +49,11 @@ class NachaFileWorker
 			ed.routing_number = transaction.routing_number
 			ed.account_number = transaction.account_number
 			ed.amount = transaction.amount
-			ed.individual_id_number = transaction.individual_id_number
-			ed.individual_name = transaction.account_holder_name
+			ed.individual_id_number = transaction.individual_name
+			ed.individual_name = transaction.individual_name
 			ed.originating_dfi_identification = partner.originating_financial_institution
-      ed.trace_number = trace_number += 1
 
-      transaction.trace_number = ed.trace_number
+      #transaction.trace_number = ed.trace_number
       transaction.batch = nacha_file
 
 			batch.entries << ed
@@ -74,16 +70,18 @@ class NachaFileWorker
 			ed.routing_number = transaction.routing_number
 			ed.account_number = transaction.account_number
 			ed.amount = transaction.amount
-			ed.individual_id_number = transaction.individual_id_number
+			ed.individual_id_number = transaction.individual_name
 			ed.individual_name = transaction.individual_name
-			ed.originating_dfi_identification = partner.
+			ed.originating_dfi_identification = partner.originating_financial_institution
 
-      transaction.trace_number = ed.trace_number
+      #transaction.trace_number = ed.trace_number
       transaction.batch = nacha_file
 
 			batch.entries << ed
 		end
 
+		# Insert trace numbers
+		batch.entries.each{ |entry| entry.trace_number = (trace_number += 1) }
 		#end
 
 		output = ach.to_s
@@ -110,7 +108,7 @@ class NachaFileWorker
 
     nacha_file.save!
 
-    transaction.each do |transaction|
+    transactions.each do |transaction|
       transaction.save!
     end
 
