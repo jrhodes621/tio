@@ -21,15 +21,16 @@ module API
         post do
 
           transaction = Transaction.create!({
-              :transaction_type => params["transaction_type"],
-              :account_holder_name => params["account_holder_name"],
-              :account_type => params["account_type"],
-              :routing_number => params["routing_number"],
-              :account_number => params["account_number"],
-              :amount => params["amount"]
+              :transaction_type => params[:transaction_type],
+              :account_type => params[:account_type],
+              :routing_number => params[:routing_number],
+              :account_number => params[:account_number],
+              :amount => params[:amount],
+              :individual_name => params[:account_holder_name],
+              :transaction_status => "Pending"
           })
 
-          transactions
+          transaction
 
         end
 
