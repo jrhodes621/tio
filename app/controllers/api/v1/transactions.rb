@@ -6,7 +6,7 @@ module API
 
       resource :transactions do
         before do
-          validate_partner
+          #validate_partner
         end
 
         desc "Creates a transaction"
