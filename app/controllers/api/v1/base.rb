@@ -46,6 +46,8 @@ module API
           @api_key = ApiKey.where(:access_token => params[:partner_key]).first
           error!('Invalid Access', 401) unless @api_key
 
+          @partner = @api_key.partner
+
           payload = params[:payload]
           checksum = Digest::MD5.hexdigest(payload + @api_key.salt)
 
@@ -78,8 +80,9 @@ module API
 
       end
 
+      mount API::V1::Customers
       mount API::V1::Transactions
-
+      mount API::V1::FinancialInstitutions
     end
   end
 end
