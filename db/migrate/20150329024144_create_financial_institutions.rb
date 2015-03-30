@@ -1,10 +1,10 @@
 class CreateFinancialInstitutions < ActiveRecord::Migration
   def change
     create_table :financial_institutions do |t|
-      t.String :name
-      t.String :logo
-      t.String :type_code
-      t.String :status
+      t.string :name
+      t.string :logo
+      t.string :type_code
+      t.string :status
 
       t.timestamps
     end
