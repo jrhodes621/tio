@@ -41,6 +41,7 @@ module API
       helpers do
         def validate_partner
 
+          binding.pry
           error!('Invalid Access', 401) unless params[:partner_key]
 
           @api_key = ApiKey.where(:access_token => params[:partner_key]).first
@@ -48,21 +49,22 @@ module API
 
           @partner = @api_key.partner
 
-          payload = params[:payload]
-          checksum = Digest::MD5.hexdigest(payload + @api_key.salt)
+          if(params[:payload])
+            payload = params[:payload]
+            checksum = Digest::MD5.hexdigest(payload + @api_key.salt)
 
-          error!('Invalid Access', 401) unless params[:checksum] == checksum
+            error!('Invalid Access', 401) unless params[:checksum] == checksum
 
-          JSON.parse(params[:payload],:symbolize_names => true).map{ |key, value|
-            params[key] = value
-          }
+            JSON.parse(params[:payload],:symbolize_names => true).map{ |key, value|
+              params[key] = value
+            }
 
-          error!('Invalid Access', 401) unless params[:time_stamp]
+            error!('Invalid Access', 401) unless params[:time_stamp]
 
-          time_stamp = Time.parse(params[:time_stamp])
+            time_stamp = Time.parse(params[:time_stamp])
 
-          error!('Invalid Access', 401) unless (time_stamp + 2 * 60) > Time.now
-
+            error!('Invalid Access', 401) unless (time_stamp + 2 * 60) > Time.now
+          end
         end
 
         def warden
