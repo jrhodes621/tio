@@ -41,7 +41,6 @@ module API
       helpers do
         def validate_partner
 
-          binding.pry
           error!('Invalid Access', 401) unless params[:partner_key]
 
           @api_key = ApiKey.where(:access_token => params[:partner_key]).first
