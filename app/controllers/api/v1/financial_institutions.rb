@@ -5,10 +5,6 @@ module API
       format :json # We don't like xml anymore
 
       resource :financial_institutions do
-        before do
-          validate_partner
-        end
-
         desc "Get all financial institutins"
         get "/" do
           financial_institutions = FinancialInstitution.all
