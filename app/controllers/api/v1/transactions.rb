@@ -20,6 +20,8 @@ module API
         end
         post do
 
+          @partner = Partner.first
+          
           transaction = @partner.transactions.create!({
               :transaction_type => params[:transaction_type],
               :account_type => params[:account_type],
