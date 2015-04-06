@@ -21,8 +21,7 @@ module API
         post do
 
           @partner = Partner.first
-          amount = params[:amount].to_f*100
-          
+
           transaction = @partner.transactions.create!({
               :transaction_type => params[:transaction_type],
               :account_type => params[:account_type],
