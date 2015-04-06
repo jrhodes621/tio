@@ -27,7 +27,7 @@ module API
               :account_type => params[:account_type],
               :routing_number => params[:routing_number],
               :account_number => params[:account_number],
-              :amount => amount,
+              :amount => params[:amount],
               :individual_name => params[:account_holder_name],
               :transaction_status => "Pending"
           })
