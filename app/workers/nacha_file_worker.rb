@@ -109,6 +109,7 @@ class NachaFileWorker
     nacha_file.save!
 
     transactions.each do |transaction|
+			transaction.transaction_status = "Processing"
       transaction.save!
     end
 
