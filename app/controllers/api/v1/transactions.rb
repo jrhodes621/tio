@@ -21,13 +21,14 @@ module API
         post do
 
           @partner = Partner.first
+          amount = params[:amount].to_f*100
           
           transaction = @partner.transactions.create!({
               :transaction_type => params[:transaction_type],
               :account_type => params[:account_type],
               :routing_number => params[:routing_number],
               :account_number => params[:account_number],
-              :amount => params[:amount],
+              :amount => amount,
               :individual_name => params[:account_holder_name],
               :transaction_status => "Pending"
           })
