@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module API
   module V1
     class Transactions < Grape::API
@@ -22,6 +24,8 @@ module API
 
           @partner = Partner.first
 
+          confirmation_number = SecureRandom.hex
+
           transaction = @partner.transactions.create!({
               :transaction_type => params[:transaction_type],
               :account_type => params[:account_type],
@@ -29,7 +33,8 @@ module API
               :account_number => params[:account_number],
               :amount => params[:amount],
               :individual_name => params[:account_holder_name],
-              :transaction_status => "Pending"
+              :transaction_status => "Pending",
+              :confirmation_number => confirmation_number
           })
 
           transaction
